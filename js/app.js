@@ -6,9 +6,8 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    this.x = x;
-    this.y = y;
-    this.speed = speed;
+    this.x = Math.random();
+    this.y = Math.random();
 
 }
 
@@ -18,6 +17,7 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    if (this.y <= 0) { this.y = 100;}
 
 }
 
@@ -52,7 +52,12 @@ Player.prototype.render = function() {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
+var enemy = new Enemy();
+var enemy1 = new Enemy();
+var enemy2 = new Enemy();
+
 var allEnemies = [];
+    allEnemies.push(enemy, enemy1, enemy2);
 
 var player = new Player();
 
