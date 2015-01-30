@@ -8,7 +8,6 @@ var Enemy = function(x,y,speed) {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
-    this.speed = speed;
 
 }
 
@@ -20,8 +19,8 @@ Enemy.prototype.update = function(dt) {
     // all computers.
         if (this.x < 505) {
       this.x = this.x + 150 * dt;
-     
     }
+        else {this.x = this.x - 600}
     
 }
 
@@ -31,8 +30,8 @@ Enemy.prototype.render = function() {
 }
 
 //creating new enemy objects
-var enemy = new Enemy(-100,60);
-var enemy1 = new Enemy(-240,143);
+var enemy = new Enemy(-200,60);
+var enemy1 = new Enemy(-350,143);
 var enemy2 = new Enemy(-50,226);
 
 // Now write your own player class
@@ -45,18 +44,41 @@ var Player = function(){
     this.y = 404;
 
 };
-Player.prototype.update = function(dt) {
+Player.prototype.update = function(key) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-     if (this.y <= 0) { this.y = 100;}
+    
+    //move player left
+    if (this.key === 'left' && this.x > 50) {
+        this.x -= 101;
+        this.key = 0
+    }
+    //move player right
+    if (this.key === 'right' && this.x <404) {
+        this.x += 101;
+        this.key = 0
+    }
+
+    //move player up
+    if (this.key === 'up' && this.y > 50) {
+        this.y -= 83;
+        this.key = 0;
+    }
+
+    //move player down
+    if (this.key === 'down' && this.y < 400) {
+        this.y += 83;
+        this.key = 0;
+    }
 }
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
-Player.prototype.handleInput = function() {
+Player.prototype.handleInput = function(key) {
+    this.key = key;
 
 }
 
