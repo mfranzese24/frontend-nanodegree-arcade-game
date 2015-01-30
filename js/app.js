@@ -17,10 +17,10 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-        if (this.x < 505) {
+        if (this.x < 505) {                 //if enemy is on screen, move enemy to the right
       this.x = this.x + 150 * dt;
     }
-        else {this.x = this.x - 600}
+        else {this.x = this.x - 600}        //else move back to the left of screen to restart
     
 }
 
@@ -29,7 +29,7 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
-//creating new enemy objects
+//creating new enemies to appear on screen along with start coordinates
 var enemy = new Enemy(-200,60);
 var enemy1 = new Enemy(-350,143);
 var enemy2 = new Enemy(-50,226);
@@ -49,37 +49,38 @@ Player.prototype.update = function(key) {
     // which will ensure the game runs at the same speed for
     // all computers.
     
-    //move player left
+    //move player left, don't go off screen
     if (this.key === 'left' && this.x > 50) {
         this.x -= 101;
         this.key = 0
     }
-    //move player right
+    //move player right, don't go off screen
     if (this.key === 'right' && this.x <404) {
         this.x += 101;
         this.key = 0
     }
 
-    //move player up
+    //move player up, don't go off screen
     if (this.key === 'up' && this.y > 50) {
         this.y -= 83;
         this.key = 0;
     }
 
-    //move player down
+    //move player down, don't go off screen
     if (this.key === 'down' && this.y < 400) {
         this.y += 83;
         this.key = 0;
     }
 }
 
+//draws player on screen
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
+//associates handling of player with keypress
 Player.prototype.handleInput = function(key) {
     this.key = key;
-
 }
 
 
@@ -87,10 +88,12 @@ Player.prototype.handleInput = function(key) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-
+//create enemy array
 var allEnemies = [];
+//push all enemies into array
     allEnemies.push(enemy, enemy1, enemy2);
 
+//create new Player 
 var player = new Player();
 
 
