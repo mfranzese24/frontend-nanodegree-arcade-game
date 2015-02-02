@@ -2,10 +2,11 @@ codecademy.com - Javascript courses
 
 1:1 with instructor
 
+Piazza forums
+
 https://docs.google.com/document/d/1F9DY2TtWbI29KSEIot1WXRqqao7OCd7OOC2W3oubSmc/pub
 
 http://stackoverflow.com/questions/6254050/how-to-add-an-object-into-an-array
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 
-Piazza forums
