@@ -70,7 +70,7 @@ Player.prototype.update = function(key) {
         this.y += 83;
         this.key = 0;
     }
-
+    //this listens for collision
     checkCollision();
     
 }
@@ -84,11 +84,15 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(key) {
     this.key = key;
 }
-
+//resets player to start position upon player.reset for collision function
 Player.prototype.reset = function() {
     this.x = 202;
     this.y = 404;
 }
+
+// Now instantiate your objects.
+// Place all enemy objects in an array called allEnemies
+// Place the player object in a variable called player
 
 //create enemy array
 var allEnemies = [];
@@ -99,7 +103,8 @@ var allEnemies = [];
 var player = new Player();
 
 //Collision Detection
-
+//checkCollision goes through each of the Enemies in the allEnemies array and checks against a range of locations for the Player
+//if there is overlapping of the items, collision is called
 var checkCollision = function(){
     for(var i = 0; i < allEnemies.length; i++){
         if(allEnemies[i].x <= player.x + 75 && allEnemies[i].x >= player.x - 75 && allEnemies[i].y <= player.y + 50 & allEnemies[i].y >= player.y - 50 ){
@@ -107,22 +112,10 @@ var checkCollision = function(){
         }
     }
 }
-
+//collision resets the player location to start
 var collision = function(){
        player.reset();
     }
-
-
-
-
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-
-
-
-
-
 
 
 // This listens for key presses and sends the keys to your
