@@ -102,7 +102,7 @@ var player = new Player();
 
 var checkCollision = function(){
     for(var i = 0; i < allEnemies.length; i++){
-        if(allEnemies[i].x <= player.x + 51 && allEnemies[i].x >= player.x - 51 && allEnemies[i].y <= player.y + 50 & allEnemies[i].y >= player.y - 50 ){
+        if(allEnemies[i].x <= player.x + 75 && allEnemies[i].x >= player.x - 75 && allEnemies[i].y <= player.y + 50 & allEnemies[i].y >= player.y - 50 ){
             collision();
         }
     }
