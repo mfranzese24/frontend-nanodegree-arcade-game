@@ -70,9 +70,11 @@ Player.prototype.update = function(key) {
         this.y += 83;
         this.key = 0;
     }
-    //this listens for collision
+    //checks for collision
     checkCollision();
-    
+
+    //checks for player hitting the water, resets game - WINNER!
+    win();    
 }
 
 //draws player on screen
@@ -117,6 +119,12 @@ var collision = function(){
        player.reset();
     }
 
+//checks for player hitting water - WINNER - resets game
+var win = function(){
+    if(player.y < 50){
+        player.reset();
+    }
+}
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
