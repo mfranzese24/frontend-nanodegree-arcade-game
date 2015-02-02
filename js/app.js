@@ -8,7 +8,6 @@ var Enemy = function(x,y,speed) {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
-
 }
 
 // Update the enemy's position, required method for game
@@ -71,6 +70,9 @@ Player.prototype.update = function(key) {
         this.y += 83;
         this.key = 0;
     }
+
+    checkCollision();
+    
 }
 
 //draws player on screen
@@ -83,18 +85,43 @@ Player.prototype.handleInput = function(key) {
     this.key = key;
 }
 
-
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
+Player.prototype.reset = function() {
+    this.x = 202;
+    this.y = 404;
+}
 
 //create enemy array
 var allEnemies = [];
 //push all enemies into array
     allEnemies.push(enemy, enemy1, enemy2);
 
-//create new Player 
+    //create new Player 
 var player = new Player();
+
+//Collision Detection
+
+var checkCollision = function(){
+    for(var i = 0; i < allEnemies.length; i++){
+        if(allEnemies[i].x <= player.x + 51 && allEnemies[i].x >= player.x - 51 && allEnemies[i].y <= player.y + 50 & allEnemies[i].y >= player.y - 50 ){
+            collision();
+        }
+    }
+}
+
+var collision = function(){
+       player.reset();
+    }
+
+
+
+
+// Now instantiate your objects.
+// Place all enemy objects in an array called allEnemies
+// Place the player object in a variable called player
+
+
+
+
 
 
 
