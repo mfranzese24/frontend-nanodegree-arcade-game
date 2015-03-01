@@ -8,7 +8,7 @@ var Enemy = function(x,y,speed) {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
-}
+};
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -20,13 +20,12 @@ Enemy.prototype.update = function(dt) {
       this.x = this.x + 150 * dt;
     }
         else {this.x = this.x - 600}        //else move back to the left of screen to restart
-    
-}
+};
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 //creating new enemies to appear on screen along with start coordinates
 var enemy = new Enemy(-200,60);
@@ -37,12 +36,11 @@ var enemy2 = new Enemy(-50,226);
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function(){
-
     this.sprite = 'images/char-boy.png';
     this.x = 202;
     this.y = 404;
-
 };
+
 Player.prototype.update = function(key) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
@@ -51,12 +49,12 @@ Player.prototype.update = function(key) {
     //move player left, don't go off screen
     if (this.key === 'left' && this.x > 50) {
         this.x -= 101;
-        this.key = 0
+        this.key = 0;
     }
     //move player right, don't go off screen
-    if (this.key === 'right' && this.x <404) {
+    if (this.key === 'right' && this.x < 404) {
         this.x += 101;
-        this.key = 0
+        this.key = 0;
     }
 
     //move player up, don't go off screen
@@ -75,22 +73,22 @@ Player.prototype.update = function(key) {
 
     //checks for player hitting the water, resets game - WINNER!
     win();    
-}
+};
 
 //draws player on screen
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 //associates handling of player with keypress
 Player.prototype.handleInput = function(key) {
     this.key = key;
-}
+};
 //resets player to start position upon player.reset for collision function
 Player.prototype.reset = function() {
     this.x = 202;
     this.y = 404;
-}
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -112,19 +110,19 @@ var checkCollision = function(){
         if(allEnemies[i].x <= player.x + 75 && allEnemies[i].x >= player.x - 75 && allEnemies[i].y <= player.y + 50 & allEnemies[i].y >= player.y - 50 ){
             collision();
         }
-    }
-}
+    };
+};
 //collision resets the player location to start
 var collision = function(){
        player.reset();
-    }
+    };
 
 //checks for player hitting water - WINNER - resets game
 var win = function(){
     if(player.y < 50){
         player.reset();
     }
-}
+};
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -135,6 +133,5 @@ document.addEventListener('keyup', function(e) {
         39: 'right',
         40: 'down'
     };
-
     player.handleInput(allowedKeys[e.keyCode]);
 });
