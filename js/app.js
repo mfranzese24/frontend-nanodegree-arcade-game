@@ -19,7 +19,7 @@ Enemy.prototype.update = function(dt) {
         if (this.x < 505) {                 //if enemy is on screen, move enemy to the right
       this.x = this.x + 150 * dt;
     }
-        else {this.x = this.x - 600}        //else move back to the left of screen to restart
+        else {this.x = this.x - 600;}       //else move back to the left of screen to restart
 };
 
 // Draw the enemy on the screen, required method for game
@@ -35,7 +35,7 @@ var enemy2 = new Enemy(-50,226);
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var Player = function(){
+var Player = function() {
     this.sprite = 'images/char-boy.png';
     this.x = 202;
     this.y = 404;
@@ -56,13 +56,11 @@ Player.prototype.update = function(key) {
         this.x += 101;
         this.key = 0;
     }
-
     //move player up, don't go off screen
     if (this.key === 'up' && this.y > 50) {
         this.y -= 83;
         this.key = 0;
     }
-
     //move player down, don't go off screen
     if (this.key === 'down' && this.y < 400) {
         this.y += 83;
@@ -72,7 +70,7 @@ Player.prototype.update = function(key) {
     checkCollision();
 
     //checks for player hitting the water, resets game - WINNER!
-    win();    
+    win();
 };
 
 //draws player on screen
@@ -105,20 +103,20 @@ var player = new Player();
 //Collision Detection
 //checkCollision goes through each of the Enemies in the allEnemies array and checks against a range of locations for the Player
 //if there is overlapping of the items, collision is called
-var checkCollision = function(){
+var checkCollision = function() {
     for(var i = 0; i < allEnemies.length; i++){
-        if(allEnemies[i].x <= player.x + 75 && allEnemies[i].x >= player.x - 75 && allEnemies[i].y <= player.y + 50 & allEnemies[i].y >= player.y - 50 ){
+        if(allEnemies[i].x <= player.x + 75 && allEnemies[i].x >= player.x - 75 && allEnemies[i].y <= player.y + 50 && allEnemies[i].y >= player.y - 50 ) {
             collision();
         }
-    };
+    }
 };
 //collision resets the player location to start
-var collision = function(){
+var collision = function() {
        player.reset();
     };
 
 //checks for player hitting water - WINNER - resets game
-var win = function(){
+var win = function() {
     if(player.y < 50){
         player.reset();
     }
