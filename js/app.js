@@ -104,7 +104,7 @@ var player = new Player();
 //checkCollision goes through each of the Enemies in the allEnemies array and checks against a range of locations for the Player
 //if there is overlapping of the items, collision is called
 var checkCollision = function() {
-    for(var i = 0; i < allEnemies.length; i++){
+    for(var i = 0; i < allEnemies.length; i++) {
         if(allEnemies[i].x <= player.x + 75 && allEnemies[i].x >= player.x - 75 && allEnemies[i].y <= player.y + 50 && allEnemies[i].y >= player.y - 50 ) {
             collision();
         }
@@ -117,7 +117,7 @@ var collision = function() {
 
 //checks for player hitting water - WINNER - resets game
 var win = function() {
-    if(player.y < 50){
+    if(player.y < 50) {
         player.reset();
     }
 };
