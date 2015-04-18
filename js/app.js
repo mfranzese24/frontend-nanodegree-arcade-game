@@ -16,10 +16,11 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-        if (this.x < 505) {                 //if enemy is on screen, move enemy to the right
-      this.x = this.x + 150 * dt;
+    if (this.x < 505) {                 //if enemy is on screen, move enemy to the right
+        this.x = this.x + 150 * dt;
     }
-        else {this.x = this.x - 600;}       //else move back to the left of screen to restart
+    else {this.x = this.x - 600;         //else move back to the left of screen to restart
+    }      
 };
 
 // Draw the enemy on the screen, required method for game
@@ -112,7 +113,7 @@ var checkCollision = function() {
 };
 //collision resets the player location to start
 var collision = function() {
-       player.reset();
+    player.reset();
     };
 
 //checks for player hitting water - WINNER - resets game
